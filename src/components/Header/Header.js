@@ -1,19 +1,38 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaShoppingBag } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { StyledHeader } from './styledHeader';
 
-export default function Header() {
+export default function Header({ showShoppingCart }) {
   return (
-    <header>
-      <ul>
-        <li>Shop</li>
-        <li>About</li>
+    <StyledHeader>
+      <ul className="list-links">
+        <li>
+          <Link to="/shop">Shop</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
       </ul>
       <div>
-        <h2>Title</h2>
+        <Link to="/">
+          <h2>Title</h2>
+        </Link>
       </div>
       <div>
-        <FaShoppingBag />
+        <button
+          className="btn-show-shoppingcart"
+          type="button"
+          onClick={showShoppingCart}
+        >
+          <FaShoppingBag />
+        </button>
       </div>
-    </header>
+    </StyledHeader>
   );
 }
+
+Header.propTypes = {
+  showShoppingCart: PropTypes.func.isRequired,
+};

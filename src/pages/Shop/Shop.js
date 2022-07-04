@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledShop } from './styledShop';
-import ShoppingCart from '../../ShoppingCart/ShoppingCart';
+import { addProductInCart } from '../../handleShoppingCart/handleShoppingCart';
 
 export default function Shop({ productsData }) {
   return (
@@ -19,7 +19,7 @@ export default function Shop({ productsData }) {
             <button
               title={product.id}
               type="button"
-              onClick={() => ShoppingCart(product)}
+              onClick={() => addProductInCart(product)}
             >
               Add To Cart
             </button>
