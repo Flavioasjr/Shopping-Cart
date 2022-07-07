@@ -6,13 +6,18 @@ import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import GlobalStyles from './styles/GlobalStyles';
+import BuyProduct from './components/BuyProduct/BuyProduct';
 
 function RouteSwitch() {
   const [shoppinCartIsShown, setshoppinCartIsShown] = useState(false);
   const [productsData, setProductsData] = useState([]);
+
   const getFetchProducts = async () => {
     const products = await fetchProducts();
-    setProductsData(products);
+    const productsFilter = products.filter(
+      (product) => product.category !== 'electronics'
+    );
+    setProductsData(productsFilter);
   };
 
   useEffect(() => {
@@ -29,15 +34,25 @@ function RouteSwitch() {
 
   return (
     <BrowserRouter>
-      <Header showShoppingCart={showShoppingCart} />
       {shoppinCartIsShown ? (
-        <ShoppingCart hideShoppingCart={hideShoppingCart} />
+        <>
+          <ShoppingCart
+            hideShoppingCart={hideShoppingCart}
+            shoppinCartIsShown={shoppinCartIsShown}
+          />
+          <div className="dark-background" />
+        </>
       ) : null}
+      <Header showShoppingCart={showShoppingCart} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop productsData={productsData} />} />
+        <Route
+          path="/shop/:id"
+          element={<BuyProduct productsData={productsData} />}
+        />
       </Routes>
-      <GlobalStyles />
+      <GlobalStyles shoppinCartIsShown={shoppinCartIsShown} />
     </BrowserRouter>
   );
 }
