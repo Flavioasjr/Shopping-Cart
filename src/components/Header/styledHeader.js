@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
-  border-bottom: 1px solid #dfdfdf;
-  box-shadow: 0px 1px 5px 0px #dfdfdf;
+  /* border-bottom: 1px solid #dfdfdf;
+  box-shadow: 0px 1px 5px 0px #dfdfdf; */
 
   .header {
     padding: 18px 30px;
@@ -10,6 +10,16 @@ export const StyledHeader = styled.header`
     align-items: center;
     justify-content: space-between;
     color: black;
+  }
+
+  /* .border-header-hide {
+    border: none;
+    box-shadow: none;
+  } */
+
+  .border-header {
+    border-bottom: 1px solid #dfdfdf;
+    box-shadow: 0px 1px 5px 0px #dfdfdf;
   }
 
   .list-links {
@@ -37,5 +47,9 @@ export const StyledHeader = styled.header`
     padding: 10px 30px;
     text-align: center;
     font-size: 0.9rem;
+  }
+
+  .link-white {
+    color: white;
   }
 `;

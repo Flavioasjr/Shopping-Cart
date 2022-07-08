@@ -46,4 +46,14 @@ ul {
 .shopping-cart {
   overflow: auto !important;
 }
+
+.img-home {
+  width: 100vw;
+  height: 99vh;
+}
+
+.background-img {
+  position: absolute;
+  z-index: -1;
+}
 `;

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { StyledShop } from './styledShop';
 import { addProductInCart } from '../../handleShoppingCart/handleShoppingCart';
 
-export default function Shop({ productsData }) {
+export default function Shop({ productsData, hideImgHome }) {
+  useEffect(() => {
+    hideImgHome();
+  });
+
   return (
     <StyledShop>
       <div className="title-shop">
@@ -41,4 +45,5 @@ export default function Shop({ productsData }) {
 
 Shop.propTypes = {
   productsData: PropTypes.array.isRequired,
+  hideImgHome: PropTypes.func.isRequired,
 };

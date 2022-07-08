@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { StyledBuyProduct } from './styledBuyProduct';
 import { addProductInCart } from '../../handleShoppingCart/handleShoppingCart';
 
-export default function BuyProduct({ productsData }) {
+export default function BuyProduct({ productsData, hideImgHome }) {
   const { id } = useParams();
+
+  useEffect(() => {
+    hideImgHome();
+  });
 
   return (
     <StyledBuyProduct>
@@ -47,4 +51,5 @@ export default function BuyProduct({ productsData }) {
 
 BuyProduct.propTypes = {
   productsData: PropTypes.array.isRequired,
+  hideImgHome: PropTypes.func.isRequired,
 };

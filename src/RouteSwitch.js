@@ -7,10 +7,12 @@ import Shop from './pages/Shop/Shop';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import GlobalStyles from './styles/GlobalStyles';
 import BuyProduct from './components/BuyProduct/BuyProduct';
+import ImgHome from './components/ImgHome/ImgHome';
 
 function RouteSwitch() {
   const [shoppinCartIsShown, setshoppinCartIsShown] = useState(false);
   const [productsData, setProductsData] = useState([]);
+  const [showImgHome, setShowImgHome] = useState(false);
 
   const getFetchProducts = async () => {
     const products = await fetchProducts();
@@ -32,8 +34,18 @@ function RouteSwitch() {
     setshoppinCartIsShown(false);
   };
 
+  const displayImgHome = () => {
+    setShowImgHome(true);
+  };
+
+  const hideImgHome = () => {
+    setShowImgHome(false);
+  };
+
   return (
     <BrowserRouter>
+      {showImgHome ? <ImgHome /> : null}
+
       {shoppinCartIsShown ? (
         <>
           <ShoppingCart
@@ -43,16 +55,26 @@ function RouteSwitch() {
           <div className="dark-background" />
         </>
       ) : null}
-      <Header showShoppingCart={showShoppingCart} />
+      <Header showShoppingCart={showShoppingCart} showImgHome={showImgHome} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop productsData={productsData} />} />
+        <Route path="/" element={<Home displayImgHome={displayImgHome} />} />
+        <Route
+          path="/shop"
+          element={
+            <Shop productsData={productsData} hideImgHome={hideImgHome} />
+          }
+        />
         <Route
           path="/shop/:id"
-          element={<BuyProduct productsData={productsData} />}
+          element={
+            <BuyProduct productsData={productsData} hideImgHome={hideImgHome} />
+          }
         />
       </Routes>
-      <GlobalStyles shoppinCartIsShown={shoppinCartIsShown} />
+      <GlobalStyles
+        shoppinCartIsShown={shoppinCartIsShown}
+        backgroungImg="./images/background.jpg"
+      />
     </BrowserRouter>
   );
 }
