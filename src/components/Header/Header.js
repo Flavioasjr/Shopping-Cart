@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsBag } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { StyledHeader } from './styledHeader';
 
-export default function Header({ showShoppingCart, showImgHome }) {
+export default function Header({
+  showShoppingCart,
+  showImgHome,
+  shoppinCartIsShown,
+  sizeProductsData,
+}) {
+  const [productsInCart, setProductsInCart] = useState(0);
+
+  useEffect(() => {
+    setProductsInCart(sizeProductsData);
+  }, []);
+
+  useEffect(() => {
+    setProductsInCart(sizeProductsData);
+  }, [sizeProductsData]);
+
   return (
     <StyledHeader>
+      {shoppinCartIsShown ? <div className="dark-background" /> : null}
       <div className={showImgHome ? null : 'border-header'}>
         <div className="top-header">
           <p>
-            FREE SHIPPING FOR ALL ORDERS OVER €100 ‍AND JUST A REMINDER, ALL OUR
+            FREE SHIPPING FOR ALL ORDERS OVER $100 ‍AND JUST A REMINDER, ALL OUR
             DELIVERIES ARE CARBON NEUTRAL
           </p>
         </div>
@@ -51,6 +67,9 @@ export default function Header({ showShoppingCart, showImgHome }) {
                     : 'shoppingcart-icon'
                 }
               />
+              {productsInCart === 0 ? null : (
+                <div className="quantity-product-in-cart">{productsInCart}</div>
+              )}
             </button>
           </div>
         </div>
@@ -62,4 +81,6 @@ export default function Header({ showShoppingCart, showImgHome }) {
 Header.propTypes = {
   showShoppingCart: PropTypes.func.isRequired,
   showImgHome: PropTypes.bool.isRequired,
+  shoppinCartIsShown: PropTypes.bool.isRequired,
+  sizeProductsData: PropTypes.number.isRequired,
 };

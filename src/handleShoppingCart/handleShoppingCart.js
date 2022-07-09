@@ -7,17 +7,12 @@ export function getShoppingCart() {
 
 export function getTotalPrice() {
   if (productsInCart.length === 0) return 0;
-  if (productsInCart.length === 1)
-    return productsInCart[0].price * productsInCart[0].quantity;
+
   const totalPrice = productsInCart.reduce(
-    (previousProduct, currentProduct) => {
-      return (
-        previousProduct.price * previousProduct.quantity +
-        currentProduct.price * currentProduct.quantity
-      );
-    }
+    (previousProduct, currentProduct) =>
+      previousProduct + currentProduct.price * currentProduct.quantity,
+    0
   );
-  // eslint-disable-next-line consistent-return
   return totalPrice;
 }
 
@@ -56,4 +51,8 @@ export function editQuantity(id, quantity) {
       productsInCart[index].quantity = Number(quantity);
     }
   });
+}
+
+export function lengthProductsInCart() {
+  return productsInCart.length;
 }

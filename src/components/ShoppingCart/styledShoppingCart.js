@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { bluePrimaryColor } from '../../styles/images/color';
 
 export const StyledShoppingCart = styled.section`
-  position: absolute;
+  position: fixed;
   right: 0;
   background: white;
   z-index: 2;
@@ -15,7 +16,7 @@ export const StyledShoppingCart = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #123e64;
+    color: ${bluePrimaryColor};
   }
 
   .products-img {
@@ -36,7 +37,7 @@ export const StyledShoppingCart = styled.section`
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #123e64;
+    color: ${bluePrimaryColor};
     font-weight: 100;
   }
 
@@ -45,6 +46,8 @@ export const StyledShoppingCart = styled.section`
     display: flex;
     flex-direction: column;
     gap: 25px;
+    height: 450px;
+    overflow: auto;
   }
 
   .product-in-cart {
@@ -58,7 +61,7 @@ export const StyledShoppingCart = styled.section`
     flex-direction: column;
     gap: 5px;
     width: 100%;
-    color: #123e64;
+    color: ${bluePrimaryColor};
   }
 
   .add-remove-product {
@@ -121,7 +124,7 @@ export const StyledShoppingCart = styled.section`
   .btn-buy-now:hover,
   .btn-buy-now:focus {
     box-shadow: inset 340px 0 0 0 white;
-    border: 1px solid #123e64;
-    color: #123e64;
+    border: 1px solid ${bluePrimaryColor};
+    color: ${bluePrimaryColor};
   }
 `;

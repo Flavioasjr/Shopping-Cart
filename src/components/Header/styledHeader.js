@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { bluePrimaryColor } from '../../styles/images/color';
 
 export const StyledHeader = styled.header`
-  /* border-bottom: 1px solid #dfdfdf;
-  box-shadow: 0px 1px 5px 0px #dfdfdf; */
+  position: relative;
 
   .header {
     padding: 18px 30px;
@@ -11,11 +11,6 @@ export const StyledHeader = styled.header`
     justify-content: space-between;
     color: black;
   }
-
-  /* .border-header-hide {
-    border: none;
-    box-shadow: none;
-  } */
 
   .border-header {
     border-bottom: 1px solid #dfdfdf;
@@ -34,6 +29,7 @@ export const StyledHeader = styled.header`
   .btn-show-shoppingcart {
     background: none;
     color: black;
+    position: relative;
   }
 
   .shoppingcart-icon {
@@ -42,7 +38,7 @@ export const StyledHeader = styled.header`
   }
 
   .top-header {
-    background-color: #123e64;
+    background-color: ${bluePrimaryColor};
     color: white;
     padding: 10px 30px;
     text-align: center;
@@ -51,5 +47,16 @@ export const StyledHeader = styled.header`
 
   .link-white {
     color: white;
+  }
+
+  .quantity-product-in-cart {
+    position: absolute;
+    top: 24px;
+    right: 14px;
+    background: #f44336;
+    color: white;
+    height: 15px;
+    border-radius: 50%;
+    width: 15px;
   }
 `;

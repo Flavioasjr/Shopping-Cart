@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import { bluePrimaryColor } from '../../styles/images/color';
 
 export const StyledShop = styled.div`
-  padding: 18px 40px;
+  background-color: #f7f7f7;
+  position: relative;
+
+  .shop {
+    padding: 18px 40px;
+  }
 
   .products-img {
     width: 100px;
@@ -9,25 +15,30 @@ export const StyledShop = styled.div`
   }
 
   .title-shop {
-    color: #123e64;
+    color: ${bluePrimaryColor};
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     padding-bottom: 30px;
     font-size: 1.2rem;
+    letter-spacing: 2px;
   }
 
   .products-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
   }
 
   .list-product {
     width: 240px;
-    height: 320px;
+    height: 345px;
     text-align: center;
+    background: white;
+    box-shadow: 0px 1px 5px 0px #dfdfdf;
+    padding: 15px 10px;
+    border-radius: 8px;
   }
 
   .product-data {
@@ -40,7 +51,7 @@ export const StyledShop = styled.div`
 
   .product-title {
     text-transform: uppercase;
-    color: #123e64;
+    color: ${bluePrimaryColor};
   }
 
   .product-price {
@@ -50,7 +61,17 @@ export const StyledShop = styled.div`
 
   .btn-add-to-cart:hover {
     background: white;
-    border: 1px solid #123e64;
+    border: 1px solid ${bluePrimaryColor};
+    color: ${bluePrimaryColor};
+  }
+
+  .btn-details {
+    background: #f7f7f7;
     color: #123e64;
+    border: 1px solid #123e64;
+  }
+
+  .add-to-cart {
+    margin-bottom: 5px;
   }
 `;

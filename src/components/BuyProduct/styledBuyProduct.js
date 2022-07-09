@@ -1,11 +1,17 @@
 import styled from 'styled-components';
+import { bluePrimaryColor } from '../../styles/images/color';
 
 export const StyledBuyProduct = styled.section`
-  padding: 30px;
+  position: relative;
+
+  .buy-product {
+    padding: 30px;
+  }
 
   .product {
     display: flex;
     gap: 50px;
+    justify-content: center;
   }
 
   .img-product {
@@ -16,6 +22,7 @@ export const StyledBuyProduct = styled.section`
     display: flex;
     flex-direction: column;
     gap: 30px;
+    max-width: 500px;
   }
 
   .title-price-product {
@@ -26,7 +33,7 @@ export const StyledBuyProduct = styled.section`
   }
 
   .product-title {
-    color: #123e64;
+    color: ${bluePrimaryColor};
     text-transform: uppercase;
     font-size: 1.3rem;
   }
@@ -40,12 +47,16 @@ export const StyledBuyProduct = styled.section`
 
   .btn-add-to-cart:hover {
     background: white;
-    border: 1px solid #123e64;
-    color: #123e64;
+    border: 1px solid ${bluePrimaryColor};
+    color: ${bluePrimaryColor};
   }
 
   .product-category {
     padding-bottom: 20px;
     text-transform: uppercase;
+  }
+
+  .product-description {
+    text-align: justify;
   }
 `;

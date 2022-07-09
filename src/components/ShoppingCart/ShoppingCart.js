@@ -13,7 +13,6 @@ import {
 export default function ShoppingCart({ hideShoppingCart }) {
   const [productsInCart, setProductsInCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  // console.log(totalPrice);
 
   const handleChange = (e) => {
     editQuantity(e.target.title, e.target.value);
@@ -27,6 +26,7 @@ export default function ShoppingCart({ hideShoppingCart }) {
       })
     );
   };
+
   const handleClickSubtract = (e) => {
     setProductsInCart(
       productsInCart.map((product) => {
@@ -35,6 +35,11 @@ export default function ShoppingCart({ hideShoppingCart }) {
         return product;
       })
     );
+  };
+
+  const handleClickRemove = (e) => {
+    removeProductInCart(e.target.title);
+    setTotalPrice(getTotalPrice());
   };
 
   useEffect(() => {
@@ -90,7 +95,7 @@ export default function ShoppingCart({ hideShoppingCart }) {
                   <button
                     title={productInCart.id}
                     type="button"
-                    onClick={() => removeProductInCart(productInCart.id)}
+                    onClick={handleClickRemove}
                     className="btn-remove"
                   >
                     Remove
