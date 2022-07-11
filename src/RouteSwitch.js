@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import fetchProducts from './API/fetchProducts/fetchProducts';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Shop from './pages/Shop/Shop';
@@ -9,46 +9,21 @@ import GlobalStyles from './styles/GlobalStyles';
 import BuyProduct from './components/BuyProduct/BuyProduct';
 import ImgHome from './components/ImgHome/ImgHome';
 import About from './pages/About/About';
-import { lengthProductsInCart } from './handleShoppingCart/handleShoppingCart';
 
-function RouteSwitch() {
-  const [shoppinCartIsShown, setshoppinCartIsShown] = useState(false);
-  const [productsData, setProductsData] = useState([]);
-  const [showImgHome, setShowImgHome] = useState(false);
-  const [sizeProductsData, setSizeProductsData] = useState(0);
-
-  const getFetchProducts = async () => {
-    const products = await fetchProducts();
-    const productsFilter = products.filter(
-      (product) => product.category !== 'electronics'
-    );
-    setProductsData(productsFilter);
-  };
-
-  useEffect(() => {
-    getFetchProducts();
-  });
-
-  const showShoppingCart = () => {
-    setshoppinCartIsShown(true);
-  };
-
-  const hideShoppingCart = () => {
-    setshoppinCartIsShown(false);
-  };
-
-  const displayImgHome = () => {
-    setShowImgHome(true);
-  };
-
-  const hideImgHome = () => {
-    setShowImgHome(false);
-  };
-
-  const addedProductInCart = () => {
-    setSizeProductsData(lengthProductsInCart());
-  };
-
+function RouteSwitch({
+  productsData,
+  shoppinCartIsShown,
+  showImgHome,
+  productsInCart,
+  addProductInCart,
+  removeProductInCart,
+  addQuantity,
+  subtractQuantity,
+  showShoppingCart,
+  hideShoppingCart,
+  displayImgHome,
+  hideImgHome,
+}) {
   return (
     <BrowserRouter>
       {showImgHome ? <ImgHome /> : null}
@@ -57,13 +32,17 @@ function RouteSwitch() {
         <ShoppingCart
           hideShoppingCart={hideShoppingCart}
           shoppinCartIsShown={shoppinCartIsShown}
+          productsInCart={productsInCart}
+          addQuantity={addQuantity}
+          subtractQuantity={subtractQuantity}
+          removeProductInCart={removeProductInCart}
         />
       ) : null}
       <Header
         showShoppingCart={showShoppingCart}
         showImgHome={showImgHome}
         shoppinCartIsShown={shoppinCartIsShown}
-        sizeProductsData={sizeProductsData}
+        sizeProductsInCart={productsInCart.length}
       />
       <Routes>
         <Route
@@ -82,7 +61,7 @@ function RouteSwitch() {
               productsData={productsData}
               hideImgHome={hideImgHome}
               shoppinCartIsShown={shoppinCartIsShown}
-              addedProductInCart={addedProductInCart}
+              addProductInCart={addProductInCart}
             />
           }
         />
@@ -93,6 +72,7 @@ function RouteSwitch() {
               productsData={productsData}
               hideImgHome={hideImgHome}
               shoppinCartIsShown={shoppinCartIsShown}
+              addProductInCart={addProductInCart}
             />
           }
         />
@@ -112,3 +92,18 @@ function RouteSwitch() {
 }
 
 export default RouteSwitch;
+
+RouteSwitch.propTypes = {
+  productsData: PropTypes.array.isRequired,
+  shoppinCartIsShown: PropTypes.bool.isRequired,
+  showImgHome: PropTypes.bool.isRequired,
+  productsInCart: PropTypes.array.isRequired,
+  addProductInCart: PropTypes.func.isRequired,
+  removeProductInCart: PropTypes.func.isRequired,
+  addQuantity: PropTypes.func.isRequired,
+  subtractQuantity: PropTypes.func.isRequired,
+  showShoppingCart: PropTypes.func.isRequired,
+  hideShoppingCart: PropTypes.func.isRequired,
+  displayImgHome: PropTypes.func.isRequired,
+  hideImgHome: PropTypes.func.isRequired,
+};

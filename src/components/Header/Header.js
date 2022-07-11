@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { BsBag } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -8,18 +8,8 @@ export default function Header({
   showShoppingCart,
   showImgHome,
   shoppinCartIsShown,
-  sizeProductsData,
+  sizeProductsInCart,
 }) {
-  const [productsInCart, setProductsInCart] = useState(0);
-
-  useEffect(() => {
-    setProductsInCart(sizeProductsData);
-  }, []);
-
-  useEffect(() => {
-    setProductsInCart(sizeProductsData);
-  }, [sizeProductsData]);
-
   return (
     <StyledHeader>
       {shoppinCartIsShown ? <div className="dark-background" /> : null}
@@ -67,8 +57,10 @@ export default function Header({
                     : 'shoppingcart-icon'
                 }
               />
-              {productsInCart === 0 ? null : (
-                <div className="quantity-product-in-cart">{productsInCart}</div>
+              {sizeProductsInCart === 0 ? null : (
+                <div className="quantity-product-in-cart">
+                  {sizeProductsInCart}
+                </div>
               )}
             </button>
           </div>
@@ -82,5 +74,5 @@ Header.propTypes = {
   showShoppingCart: PropTypes.func.isRequired,
   showImgHome: PropTypes.bool.isRequired,
   shoppinCartIsShown: PropTypes.bool.isRequired,
-  sizeProductsData: PropTypes.number.isRequired,
+  sizeProductsInCart: PropTypes.number.isRequired,
 };

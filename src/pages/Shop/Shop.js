@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { StyledShop } from './styledShop';
-import { addProductInCart } from '../../handleShoppingCart/handleShoppingCart';
 
 export default function Shop({
   productsData,
   hideImgHome,
   shoppinCartIsShown,
-  addedProductInCart,
+  addProductInCart,
 }) {
   useEffect(() => {
     hideImgHome();
@@ -19,7 +18,6 @@ export default function Shop({
       (product) =>
         product.id === Number(e.target.title) && addProductInCart(product)
     );
-    addedProductInCart();
   };
 
   return (
@@ -72,5 +70,5 @@ Shop.propTypes = {
   productsData: PropTypes.array.isRequired,
   hideImgHome: PropTypes.func.isRequired,
   shoppinCartIsShown: PropTypes.bool.isRequired,
-  addedProductInCart: PropTypes.func.isRequired,
+  addProductInCart: PropTypes.func.isRequired,
 };
