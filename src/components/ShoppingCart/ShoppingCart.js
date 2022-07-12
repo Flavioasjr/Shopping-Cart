@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlineClose } from 'react-icons/ai';
-import { StyledShoppingCart } from './styledShoppingCart';
+import * as Styled from './styledShoppingCart';
 import ListShoppingCart from '../ListShoppingCart/ListShoppingCart';
 
 export default function ShoppingCart({
@@ -36,11 +35,11 @@ export default function ShoppingCart({
   };
 
   return (
-    <StyledShoppingCart className="shopping-cart">
-      <div className="header-cart">
+    <Styled.ShoppingCart>
+      <Styled.HeaderCart>
         <h3>CART</h3>
-        <AiOutlineClose onClick={hideShoppingCart} className="icon-close" />
-      </div>
+        <Styled.IconClose onClick={hideShoppingCart} />
+      </Styled.HeaderCart>
       <ListShoppingCart
         handleClickAdd={handleClickAdd}
         handleClickRemove={handleClickRemove}
@@ -48,13 +47,13 @@ export default function ShoppingCart({
         productsInCart={productsInCart}
       />
       {productsInCart.length === 0 ? null : (
-        <div className="buy-now">
-          <button type="button" className="btn-buy-now">
+        <Styled.BuyNow>
+          <Styled.BtnBuyNow type="button" className="btn-buy-now">
             Buy Now - ${totalPrice.toFixed(2)}
-          </button>
-        </div>
+          </Styled.BtnBuyNow>
+        </Styled.BuyNow>
       )}
-    </StyledShoppingCart>
+    </Styled.ShoppingCart>
   );
 }
 

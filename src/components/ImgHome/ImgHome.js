@@ -1,10 +1,11 @@
 import React from 'react';
 import img from '../../styles/images/img2.jpg';
+import * as Styled from './styledImgHome';
 
 export default function ImgHome() {
   return (
-    <div className="background-img">
-      <img src={img} alt="test" className="img-home" />
-    </div>
+    <Styled.BackgroundImg>
+      <Styled.Img src={img} alt="test" />
+    </Styled.BackgroundImg>
   );
 }

@@ -34,26 +34,4 @@ a {
 ul {
   list-style: none;
 }
-
-.dark-background {
-  background-color: #0000005e;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
-
-.shopping-cart {
-  overflow: auto !important;
-}
-
-.img-home {
-  width: 100vw;
-  height: 99vh;
-}
-
-.background-img {
-  position: absolute;
-  z-index: -1;
-}
 `;

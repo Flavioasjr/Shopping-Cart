@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import { StyledBuyProduct } from './styledBuyProduct';
+import * as Styled from './styledBuyProduct';
 
 export default function BuyProduct({
   productsData,
@@ -16,43 +16,46 @@ export default function BuyProduct({
   }, []);
 
   return (
-    <StyledBuyProduct>
-      {shoppinCartIsShown ? <div className="dark-background" /> : null}
-      <div className="buy-product">
+    <Styled.BuyProduct>
+      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      <Styled.BuyProductContent>
         {productsData.map((product) => {
           if (product.id === Number(id)) {
             return (
-              <div className="product" key={product.id}>
-                <img
+              <Styled.Product key={product.id}>
+                <Styled.ImgProduct
                   src={product.image}
                   alt={product.title}
                   className="img-product"
                 />
-                <div className="complete-product-information">
-                  <div className="title-price-product">
-                    <h3 className="product-title">{product.title}</h3>
-                    <p className="product-price">${product.price}</p>
-                  </div>
-                  <div className="product-description">
-                    <p className="product-category">{product.category}</p>
-                    <p>{product.description}</p>
-                  </div>
-                  <button
+                <Styled.CompleteProductInformation>
+                  <Styled.TitlePriceProduct>
+                    <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
+                    <Styled.ProductPrice>${product.price}</Styled.ProductPrice>
+                  </Styled.TitlePriceProduct>
+                  <Styled.ProductDescription>
+                    <Styled.ProductCategory>
+                      {product.category}
+                    </Styled.ProductCategory>
+                    <Styled.ProductDescription>
+                      {product.description}
+                    </Styled.ProductDescription>
+                  </Styled.ProductDescription>
+                  <Styled.BtnAddToCart
                     title={product.id}
                     type="button"
                     onClick={() => addProductInCart(product)}
-                    className="btn-add-to-cart"
                   >
                     Add To Cart
-                  </button>
-                </div>
-              </div>
+                  </Styled.BtnAddToCart>
+                </Styled.CompleteProductInformation>
+              </Styled.Product>
             );
           }
           return null;
         })}
-      </div>
-    </StyledBuyProduct>
+      </Styled.BuyProductContent>
+    </Styled.BuyProduct>
   );
 }
 

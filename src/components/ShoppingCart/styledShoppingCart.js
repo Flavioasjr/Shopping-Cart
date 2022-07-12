@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { AiOutlineClose } from 'react-icons/ai';
 import { bluePrimaryColor } from '../../styles/images/color';
 
-export const StyledShoppingCart = styled.section`
+export const ShoppingCart = styled.section`
   position: fixed;
   right: 0;
   background: white;
@@ -10,119 +11,32 @@ export const StyledShoppingCart = styled.section`
   min-height: 100vh;
   display: grid;
   grid-template-rows: 88px 1fr 50px;
+`;
 
-  .header-cart {
-    padding: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: ${bluePrimaryColor};
-  }
+export const HeaderCart = styled.div`
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: ${bluePrimaryColor};
+`;
 
-  .products-img {
-    width: 100px;
-  }
+export const IconClose = styled(AiOutlineClose)`
+  width: 30px;
+  height: 28px;
+  color: #7c7c7c;
+  cursor: pointer;
+`;
 
-  .icon-close {
-    width: 30px;
-    height: 28px;
-    color: #7c7c7c;
-    cursor: pointer;
-  }
+export const BuyNow = styled.div`
+  text-align: center;
+  padding: 0 30px;
+`;
 
-  .cart-empty {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: ${bluePrimaryColor};
-    font-weight: 100;
-  }
-
-  .products-in-cart {
-    padding: 0 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    height: 450px;
-    overflow: auto;
-  }
-
-  .product-in-cart {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .product-informtation {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
-    color: ${bluePrimaryColor};
-  }
-
-  .add-remove-product {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    justify-content: space-between;
-  }
-
-  .change-quantity {
-    display: flex;
-    border: 1px solid #b7b7b7;
-    height: 40px;
-    align-items: center;
-    padding: 4px;
-  }
-
-  .input-quantity {
-    background: transparent;
-    border: none;
-    width: 40px;
-    text-align: center;
-    color: #6b9aac;
-    font-weight: bold;
-  }
-
-  .input-quantity::-webkit-outer-spin-button,
-  .input-quantity::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  .quantity-icon {
-    height: 25px;
-    cursor: pointer;
-    color: #6b9aac;
-  }
-
-  .btn-remove {
-    background: none;
-    color: #6b9aac;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .product-in-cart-price {
-    color: #97adb1;
-  }
-
-  .buy-now {
-    text-align: center;
-    padding: 0 30px;
-  }
-
-  .btn-buy-now {
-    width: 100%;
-    transition: 0.45s;
-  }
-
-  .btn-buy-now:hover,
-  .btn-buy-now:focus {
+export const BtnBuyNow = styled.button`
+  width: 100%;
+  transition: 0.8s;
+  &:hover {
     box-shadow: inset 340px 0 0 0 white;
     border: 1px solid ${bluePrimaryColor};
     color: ${bluePrimaryColor};

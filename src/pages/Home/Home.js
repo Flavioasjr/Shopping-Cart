@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { StyledHome } from './styledHome';
+import * as Styled from './styledHome';
 
 export default function Home({ displayImgHome, shoppinCartIsShown }) {
   useEffect(() => {
@@ -9,22 +9,20 @@ export default function Home({ displayImgHome, shoppinCartIsShown }) {
   }, []);
 
   return (
-    <StyledHome>
-      {shoppinCartIsShown ? (
-        <div className="dark-background dark-home" />
-      ) : null}
-      <div className="home">
-        <h3 className="title-home">
+    <section>
+      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      <Styled.Home>
+        <Styled.TitleHome>
           Good clothes are the ones that make you happy
-        </h3>
+        </Styled.TitleHome>
         ;
         <Link to="/shop" className="link-to-shop">
-          <button type="button" className="btn-home">
+          <Styled.ButtonLink type="button" className="btn-home">
             see our products
-          </button>
+          </Styled.ButtonLink>
         </Link>
-      </div>
-    </StyledHome>
+      </Styled.Home>
+    </section>
   );
 }
 

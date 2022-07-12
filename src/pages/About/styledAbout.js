@@ -1,58 +1,63 @@
 import styled from 'styled-components';
 import { bluePrimaryColor } from '../../styles/images/color';
 
-export const StyledAbout = styled.section`
+export const SectionAbout = styled.section`
   position: relative;
+`;
 
-  .about {
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-  }
+export const DarkBackground = styled.div`
+  background-color: #0000005e;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+`;
 
-  .title-about {
-    color: ${bluePrimaryColor};
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: center;
-    padding-bottom: 15px;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-  }
+export const About = styled.div`
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+`;
 
-  .subtitle-about {
-    text-align: center;
-    font-size: 1.1rem;
-  }
+export const TitleAbout = styled.h3`
+  color: ${bluePrimaryColor};
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+`;
 
-  .the-now,
-  .the-feeling {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    max-width: 900px;
-  }
+export const SubtitleAbout = styled.p`
+  text-align: center;
+  font-size: 1.1rem;
+`;
 
-  .img-the-now {
-    width: 400px;
-  }
+export const AboutContent = styled.div`
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  max-width: 900px;
+`;
 
-  .title-the-now,
-  .title-the-feeling {
-    letter-spacing: 2px;
-    color: ${bluePrimaryColor};
-    padding-bottom: 15px;
-    font-size: 1.2rem;
-  }
+export const TitleContent = styled.h4`
+  letter-spacing: 2px;
+  color: ${bluePrimaryColor};
+  padding-bottom: 15px;
+  font-size: 1.2rem;
+`;
 
-  .content-the-now,
-  .content-the-feeling {
-    text-align: justify;
-  }
+export const ContentParagraph = styled.p`
+  text-align: justify;
+`;
 
-  .img-the-feeling {
-    height: 450px;
-  }
+export const ImgTheNow = styled.img`
+  width: 400px;
+`;
+
+export const ImgTheFeeling = styled.img`
+  height: 450px;
 `;

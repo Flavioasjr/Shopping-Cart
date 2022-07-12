@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { GrAdd, GrFormSubtract } from 'react-icons/gr';
+import * as Styled from './styledListShoppingCart';
 
 export default function ListShoppingCart({
   productsInCart,
@@ -11,52 +11,50 @@ export default function ListShoppingCart({
   return (
     <div>
       {productsInCart.length === 0 ? (
-        <h3 className="cart-empty">YOUR CART IS EMPTY</h3>
+        <Styled.CartEmpty>YOUR CART IS EMPTY</Styled.CartEmpty>
       ) : (
-        <ul className="products-in-cart">
+        <Styled.ProductsInCart>
           {productsInCart.map((productInCart) => (
-            <li key={productInCart.id} className="product-in-cart">
-              <img
+            <Styled.ProductInCart key={productInCart.id}>
+              <Styled.ProductImg
                 src={productInCart.image}
                 alt={productInCart.title}
-                className="products-img"
               />
-              <div className="product-informtation">
+              <Styled.ProductInformation>
                 <p>{productInCart.title}</p>
-                <p className="product-in-cart-price">${productInCart.price}</p>
-                <div className="add-remove-product">
-                  <div className="change-quantity">
-                    <GrFormSubtract
-                      className="quantity-icon"
+                <Styled.ProductInCartPrice>
+                  ${productInCart.price}
+                </Styled.ProductInCartPrice>
+                <Styled.AddRemoveProduct>
+                  <Styled.ChangeQuantity>
+                    <Styled.SubtractIcon
                       onClick={handleClickSubtract}
                       title={productInCart.id}
                     />
-                    <input
+                    <Styled.InputQuantity
                       value={productInCart.quantity}
                       type="number"
                       onChange={() => productInCart.quantity}
                       title={productInCart.id}
-                      className="input-quantity"
                     />
-                    <GrAdd
-                      className="quantity-icon"
+                    <Styled.AddIcon
                       onClick={handleClickAdd}
                       title={productInCart.id}
                     />
-                  </div>
-                  <button
+                  </Styled.ChangeQuantity>
+                  <Styled.BtnRemove
                     title={productInCart.id}
                     type="button"
                     onClick={handleClickRemove}
                     className="btn-remove"
                   >
                     Remove
-                  </button>
-                </div>
-              </div>
-            </li>
+                  </Styled.BtnRemove>
+                </Styled.AddRemoveProduct>
+              </Styled.ProductInformation>
+            </Styled.ProductInCart>
           ))}
-        </ul>
+        </Styled.ProductsInCart>
       )}
     </div>
   );

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsBag } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { StyledHeader } from './styledHeader';
+import * as Styled from './styledHeader';
 
 export default function Header({
   showShoppingCart,
@@ -11,62 +10,58 @@ export default function Header({
   sizeProductsInCart,
 }) {
   return (
-    <StyledHeader>
-      {shoppinCartIsShown ? <div className="dark-background" /> : null}
-      <div className={showImgHome ? null : 'border-header'}>
-        <div className="top-header">
+    <Styled.Header>
+      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      <Styled.BorderHeader showImgHome={showImgHome}>
+        <Styled.TopHeader>
           <p>
             FREE SHIPPING FOR ALL ORDERS OVER $100 ‍AND JUST A REMINDER, ALL OUR
             DELIVERIES ARE CARBON NEUTRAL
           </p>
-        </div>
-        <div className="header">
-          <ul className="list-links">
+        </Styled.TopHeader>
+        <Styled.BottomHeader>
+          <Styled.ListLinks>
             <li>
-              <Link to="/shop" className={showImgHome ? 'link-white' : null}>
-                Shop
+              <Link to="/shop">
+                <Styled.StyleLink showImgHome={showImgHome}>
+                  Shop
+                </Styled.StyleLink>
               </Link>
             </li>
             <li>
-              <Link to="/about" className={showImgHome ? 'link-white' : null}>
-                About
+              <Link to="/about">
+                <Styled.StyleLink showImgHome={showImgHome}>
+                  About
+                </Styled.StyleLink>
               </Link>
             </li>
-          </ul>
+          </Styled.ListLinks>
           <div>
-            <Link
-              to="/"
-              className={
-                showImgHome ? 'link-white title-header' : 'title-header'
-              }
-            >
-              <h2>AMAZING</h2>
-              <h4>STORE</h4>
+            <Link to="/">
+              <Styled.TitleHeader showImgHome={showImgHome}>
+                <h2>AMAZING</h2>
+                <h4>STORE</h4>
+              </Styled.TitleHeader>
             </Link>
           </div>
           <div>
-            <button
-              className="btn-show-shoppingcart"
+            <Styled.BtnShowShoppingcart
               type="button"
               onClick={showShoppingCart}
+              showImgHome={showImgHome}
             >
-              <BsBag
-                className={
-                  showImgHome
-                    ? 'link-white shoppingcart-icon'
-                    : 'shoppingcart-icon'
-                }
-              />
+              <Styled.BagIcon />
+
               {sizeProductsInCart === 0 ? null : (
-                <div className="quantity-product-in-cart">
+                <Styled.QuantityProductInCart>
                   {sizeProductsInCart}
-                </div>
+                </Styled.QuantityProductInCart>
               )}
-            </button>
+            </Styled.BtnShowShoppingcart>
           </div>
-        </div>
-      </div>
-    </StyledHeader>
+        </Styled.BottomHeader>
+      </Styled.BorderHeader>
+    </Styled.Header>
   );
 }
 
