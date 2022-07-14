@@ -6,7 +6,7 @@ function App() {
   const [shoppinCartIsShown, setshoppinCartIsShown] = useState(false);
   const [productsData, setProductsData] = useState([]);
   const [productsInCart, setProductsInCart] = useState([]);
-  const [showImgHome, setShowImgHome] = useState(false);
+  const [showImgHome, setShowImgHome] = useState(true);
 
   const getFetchProducts = async () => {
     const products = await fetchProducts();

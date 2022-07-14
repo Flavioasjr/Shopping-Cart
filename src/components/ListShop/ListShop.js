@@ -9,11 +9,7 @@ export default function ListShop({ productsData, addProductInCart }) {
       {productsData.map((product) => (
         <Styled.ListProduct key={product.id}>
           <Link to={`/shop/${product.id}`}>
-            <Styled.ProductImg
-              src={product.image}
-              alt={product.title}
-              className="products-img"
-            />
+            <Styled.ProductImg src={product.image} alt={product.title} />
           </Link>
           <Styled.ProductData>
             <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
@@ -25,7 +21,6 @@ export default function ListShop({ productsData, addProductInCart }) {
               title={product.id}
               type="button"
               onClick={() => addProductInCart(product)}
-              className="btn-add-to-cart"
             >
               Add To Cart
             </Styled.BtnAddToCart>

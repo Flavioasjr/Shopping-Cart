@@ -5,7 +5,7 @@ import * as Styled from './styledImgHome';
 export default function ImgHome() {
   return (
     <Styled.BackgroundImg>
-      <Styled.Img src={img} alt="test" />
+      <Styled.Img src={img} alt="home" data-testid="image" />
     </Styled.BackgroundImg>
   );
 }
