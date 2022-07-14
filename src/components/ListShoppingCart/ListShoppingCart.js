@@ -30,6 +30,7 @@ export default function ListShoppingCart({
                     <Styled.SubtractIcon
                       onClick={handleClickSubtract}
                       title={productInCart.id}
+                      data-testid={`subtractIcon${productInCart.id}`}
                     />
                     <Styled.InputQuantity
                       value={productInCart.quantity}
@@ -40,13 +41,13 @@ export default function ListShoppingCart({
                     <Styled.AddIcon
                       onClick={handleClickAdd}
                       title={productInCart.id}
+                      data-testid={`addIcon${productInCart.id}`}
                     />
                   </Styled.ChangeQuantity>
                   <Styled.BtnRemove
                     title={productInCart.id}
                     type="button"
                     onClick={handleClickRemove}
-                    className="btn-remove"
                   >
                     Remove
                   </Styled.BtnRemove>
