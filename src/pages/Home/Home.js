@@ -10,7 +10,9 @@ export default function Home({ displayImgHome, shoppinCartIsShown }) {
 
   return (
     <section>
-      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      {shoppinCartIsShown ? (
+        <Styled.DarkBackground title="dark-background" />
+      ) : null}
       <Styled.Home>
         <Styled.TitleHome>
           Good clothes are the ones that make you happy

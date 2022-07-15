@@ -38,7 +38,7 @@ export default function ShoppingCart({
     <Styled.ShoppingCart>
       <Styled.HeaderCart>
         <h3>CART</h3>
-        <Styled.IconClose onClick={hideShoppingCart} />
+        <Styled.IconClose onClick={hideShoppingCart} title="icon-close" />
       </Styled.HeaderCart>
       <ListShoppingCart
         handleClickAdd={handleClickAdd}

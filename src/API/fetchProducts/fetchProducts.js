@@ -4,6 +4,6 @@ export default async function fetchProducts() {
     const products = await response.json();
     return products;
   } catch (error) {
-    return error;
+    return null;
   }
 }

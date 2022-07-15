@@ -10,7 +10,9 @@ export default function About({ hideImgHome, shoppinCartIsShown }) {
   }, []);
   return (
     <Styled.SectionAbout>
-      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      {shoppinCartIsShown ? (
+        <Styled.DarkBackground title="dark-background" />
+      ) : null}
       <Styled.About>
         <div>
           <Styled.TitleAbout>OUR STORY</Styled.TitleAbout>
@@ -47,7 +49,7 @@ export default function About({ hideImgHome, shoppinCartIsShown }) {
               are cute, sexy, effortlessly cool and comfy.
             </Styled.ContentParagraph>
           </div>
-          <Styled.ImgTheFeeling src={imgFeeling} alt="The now" />
+          <Styled.ImgTheFeeling src={imgFeeling} alt="The feeling" />
         </Styled.AboutContent>
       </Styled.About>
     </Styled.SectionAbout>
