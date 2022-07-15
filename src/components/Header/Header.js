@@ -37,7 +37,7 @@ export default function Header({
             </li>
           </Styled.ListLinks>
           <div>
-            <Link to="/">
+            <Link to="/Shopping-Cart/">
               <Styled.TitleHeader showImgHome={showImgHome}>
                 <h2>AMAZING</h2>
                 <h4>STORE</h4>

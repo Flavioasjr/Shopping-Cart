@@ -15,7 +15,7 @@ export default function Home({ displayImgHome, shoppinCartIsShown }) {
         <Styled.TitleHome>
           Good clothes are the ones that make you happy
         </Styled.TitleHome>
-        ;
+
         <Link to="/shop" className="link-to-shop">
           <Styled.ButtonLink type="button" className="btn-home">
             see our products

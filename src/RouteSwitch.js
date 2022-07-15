@@ -46,7 +46,7 @@ function RouteSwitch({
       />
       <Routes>
         <Route
-          path="/"
+          path="/Shopping-Cart/"
           element={
             <Home
               displayImgHome={displayImgHome}

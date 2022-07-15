@@ -56,7 +56,7 @@ describe('Header Component tests', () => {
       );
       const linkTitle = screen.getByRole('link', { name: 'AMAZING STORE' });
       expect(linkTitle).toBeInTheDocument();
-      expect(linkTitle.href).toBe('http://localhost/');
+      expect(linkTitle.href).toBe('http://localhost/Shopping-Cart/');
     });
 
     test('the icon button should be shown', () => {
