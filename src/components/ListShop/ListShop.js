@@ -1,9 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Styled from './styledListShop';
+import { productAdded } from '../../features/productsInCartSlice';
+import {
+  selectAllProducts,
+  fetchProductsData,
+} from '../../features/productsDataSlice';
+import { Spinner } from '../Spinner/Spinner';
 
-export default function ListShop({ productsData, addProductInCart }) {
+export default function ListShop() {
+  const dispatch = useDispatch();
+  const productsData = useSelector(selectAllProducts);
+  const productsStatus = useSelector((state) => state.productsData.status);
+
+  useEffect(() => {
+    if (productsStatus === 'idle') {
+      dispatch(fetchProductsData());
+    }
+  }, []);
+
+  if (productsStatus === 'loading') return <Spinner text="Loading..." />;
+
   return (
     <Styled.ProductsList>
       {productsData.map((product) => (
@@ -20,7 +38,7 @@ export default function ListShop({ productsData, addProductInCart }) {
             <Styled.BtnAddToCart
               title={product.id}
               type="button"
-              onClick={() => addProductInCart(product)}
+              onClick={() => dispatch(productAdded(product))}
             >
               Add To Cart
             </Styled.BtnAddToCart>
@@ -35,8 +53,3 @@ export default function ListShop({ productsData, addProductInCart }) {
     </Styled.ProductsList>
   );
 }
-
-ListShop.propTypes = {
-  productsData: PropTypes.array.isRequired,
-  addProductInCart: PropTypes.func.isRequired,
-};

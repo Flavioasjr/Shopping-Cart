@@ -1,15 +1,28 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
+import { productAdded } from '../../features/productsInCartSlice';
+import {
+  selectProductById,
+  fetchProductsData,
+} from '../../features/productsDataSlice';
 
-export default function BuyProduct({
-  productsData,
-  hideImgHome,
-  shoppinCartIsShown,
-  addProductInCart,
-}) {
+export default function BuyProduct({ hideImgHome }) {
   const { id } = useParams();
+
+  const dispatch = useDispatch();
+  const product = useSelector((state) => selectProductById(state, Number(id)));
+  const productsStatus = useSelector((state) => state.productsData.status);
+
+  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+
+  useEffect(() => {
+    if (productsStatus === 'idle') {
+      dispatch(fetchProductsData());
+    }
+  }, []);
 
   useEffect(() => {
     hideImgHome();
@@ -17,51 +30,41 @@ export default function BuyProduct({
 
   return (
     <Styled.BuyProduct>
-      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      {shoppingCartIsShow ? <Styled.DarkBackground /> : null}
       <Styled.BuyProductContent>
-        {productsData.map((product) => {
-          if (product.id === Number(id)) {
-            return (
-              <Styled.Product key={product.id}>
-                <Styled.ImgProduct
-                  src={product.image}
-                  alt={product.title}
-                  className="img-product"
-                />
-                <Styled.CompleteProductInformation>
-                  <Styled.TitlePriceProduct>
-                    <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
-                    <Styled.ProductPrice>${product.price}</Styled.ProductPrice>
-                  </Styled.TitlePriceProduct>
-                  <Styled.ProductDescription>
-                    <Styled.ProductCategory>
-                      {product.category}
-                    </Styled.ProductCategory>
-                    <Styled.ProductDescription>
-                      {product.description}
-                    </Styled.ProductDescription>
-                  </Styled.ProductDescription>
-                  <Styled.BtnAddToCart
-                    title={product.id}
-                    type="button"
-                    onClick={() => addProductInCart(product)}
-                  >
-                    Add To Cart
-                  </Styled.BtnAddToCart>
-                </Styled.CompleteProductInformation>
-              </Styled.Product>
-            );
-          }
-          return null;
-        })}
+        <Styled.Product key={product.id}>
+          <Styled.ImgProduct
+            src={product.image}
+            alt={product.title}
+            className="img-product"
+          />
+          <Styled.CompleteProductInformation>
+            <Styled.TitlePriceProduct>
+              <Styled.ProductTitle>{product.title}</Styled.ProductTitle>
+              <Styled.ProductPrice>${product.price}</Styled.ProductPrice>
+            </Styled.TitlePriceProduct>
+            <Styled.ProductDescription>
+              <Styled.ProductCategory>
+                {product.category}
+              </Styled.ProductCategory>
+              <Styled.ProductDescription>
+                {product.description}
+              </Styled.ProductDescription>
+            </Styled.ProductDescription>
+            <Styled.BtnAddToCart
+              title={product.id}
+              type="button"
+              onClick={() => dispatch(productAdded(product))}
+            >
+              Add To Cart
+            </Styled.BtnAddToCart>
+          </Styled.CompleteProductInformation>
+        </Styled.Product>
       </Styled.BuyProductContent>
     </Styled.BuyProduct>
   );
 }
 
 BuyProduct.propTypes = {
-  productsData: PropTypes.array.isRequired,
   hideImgHome: PropTypes.func.isRequired,
-  shoppinCartIsShown: PropTypes.bool.isRequired,
-  addProductInCart: PropTypes.func.isRequired,
 };

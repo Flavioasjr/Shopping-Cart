@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import * as Styled from './styledHome';
 
-export default function Home({ displayImgHome, shoppinCartIsShown }) {
+export default function Home({ displayImgHome }) {
   useEffect(() => {
     displayImgHome();
   }, []);
 
+  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+
   return (
     <section>
-      {shoppinCartIsShown ? (
+      {shoppingCartIsShow ? (
         <Styled.DarkBackground title="dark-background" />
       ) : null}
       <Styled.Home>
@@ -30,5 +33,4 @@ export default function Home({ displayImgHome, shoppinCartIsShown }) {
 
 Home.propTypes = {
   displayImgHome: PropTypes.func.isRequired,
-  shoppinCartIsShown: PropTypes.bool.isRequired,
 };

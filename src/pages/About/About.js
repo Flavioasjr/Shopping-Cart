@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import imgTheNow from '../../styles/images/about.jpg';
 import imgFeeling from '../../styles/images/about2.jpg';
 import * as Styled from './styledAbout';
 
-export default function About({ hideImgHome, shoppinCartIsShown }) {
+export default function About({ hideImgHome }) {
   useEffect(() => {
     hideImgHome();
   }, []);
+
+  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+
   return (
     <Styled.SectionAbout>
-      {shoppinCartIsShown ? (
+      {shoppingCartIsShow ? (
         <Styled.DarkBackground title="dark-background" />
       ) : null}
       <Styled.About>
@@ -58,5 +62,4 @@ export default function About({ hideImgHome, shoppinCartIsShown }) {
 
 About.propTypes = {
   hideImgHome: PropTypes.func.isRequired,
-  shoppinCartIsShown: PropTypes.bool.isRequired,
 };

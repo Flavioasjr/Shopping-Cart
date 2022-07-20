@@ -1,13 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import * as Styled from './styledListShoppingCart';
+import {
+  productRemoved,
+  quantityAdded,
+  quantitySubtracted,
+} from '../../features/productsInCartSlice';
 
-export default function ListShoppingCart({
-  productsInCart,
-  handleClickSubtract,
-  handleClickAdd,
-  handleClickRemove,
-}) {
+export default function ListShoppingCart() {
+  const dispatch = useDispatch();
+
+  const productsInCart = useSelector((state) => state.productsInCart);
+
   return (
     <div>
       {productsInCart.length === 0 ? (
@@ -28,7 +32,9 @@ export default function ListShoppingCart({
                 <Styled.AddRemoveProduct>
                   <Styled.ChangeQuantity>
                     <Styled.SubtractIcon
-                      onClick={handleClickSubtract}
+                      onClick={() =>
+                        dispatch(quantitySubtracted(productInCart.id))
+                      }
                       title={productInCart.id}
                       data-testid={`subtractIcon${productInCart.id}`}
                     />
@@ -39,7 +45,7 @@ export default function ListShoppingCart({
                       title={productInCart.id}
                     />
                     <Styled.AddIcon
-                      onClick={handleClickAdd}
+                      onClick={() => dispatch(quantityAdded(productInCart.id))}
                       title={productInCart.id}
                       data-testid={`addIcon${productInCart.id}`}
                     />
@@ -47,7 +53,7 @@ export default function ListShoppingCart({
                   <Styled.BtnRemove
                     title={productInCart.id}
                     type="button"
-                    onClick={handleClickRemove}
+                    onClick={() => dispatch(productRemoved(productInCart.id))}
                   >
                     Remove
                   </Styled.BtnRemove>
@@ -60,10 +66,3 @@ export default function ListShoppingCart({
     </div>
   );
 }
-
-ListShoppingCart.propTypes = {
-  productsInCart: PropTypes.array.isRequired,
-  handleClickAdd: PropTypes.func.isRequired,
-  handleClickRemove: PropTypes.func.isRequired,
-  handleClickSubtract: PropTypes.func.isRequired,
-};

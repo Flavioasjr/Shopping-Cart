@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledHeader';
+import { shoppingCartShown } from '../../features/shoppingCartIsShowSlice';
 
-export default function Header({
-  showShoppingCart,
-  showImgHome,
-  shoppinCartIsShown,
-  sizeProductsInCart,
-}) {
+export default function Header({ showImgHome }) {
+  const productsInCart = useSelector((state) => state.productsInCart);
+  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+
+  const [sizeProductsInCart, setSizeProductsInCart] = useState(0);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setSizeProductsInCart(productsInCart.length);
+  }, [productsInCart]);
+
   return (
     <Styled.Header>
-      {shoppinCartIsShown ? <Styled.DarkBackground /> : null}
+      {shoppingCartIsShow ? <Styled.DarkBackground /> : null}
       <Styled.BorderHeader showImgHome={showImgHome}>
         <Styled.TopHeader>
           <p>
@@ -47,7 +55,7 @@ export default function Header({
           <div>
             <Styled.BtnShowShoppingcart
               type="button"
-              onClick={showShoppingCart}
+              onClick={() => dispatch(shoppingCartShown())}
               showImgHome={showImgHome}
             >
               <Styled.BagIcon />
@@ -66,8 +74,5 @@ export default function Header({
 }
 
 Header.propTypes = {
-  showShoppingCart: PropTypes.func.isRequired,
   showImgHome: PropTypes.bool.isRequired,
-  shoppinCartIsShown: PropTypes.bool.isRequired,
-  sizeProductsInCart: PropTypes.number.isRequired,
 };
