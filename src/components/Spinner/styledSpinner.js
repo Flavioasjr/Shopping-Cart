@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { reduxColor } from '../../styles/images/color';
+import { bluePrimaryColor } from '../../styles/images/color';
 
 export const Spinner = styled.div`
   display: flex;
@@ -10,6 +10,8 @@ export const Spinner = styled.div`
 
 export const SpinnerText = styled.h4`
   margin: 5px;
+  color: ${bluePrimaryColor};
+  font-size: 1.5rem;
 `;
 
 export const Loader = styled.div`
@@ -17,39 +19,39 @@ export const Loader = styled.div`
   width: '5em';
   font-size: 10px;
   margin: 10px;
-  /* text-indent: -9999em; */
   width: 5em;
   height: 5em;
   border-radius: 50%;
-  background: ${reduxColor};
+  background: ${bluePrimaryColor};
   background: -moz-linear-gradient(
     left,
-    ${reduxColor} 10%,
+    ${bluePrimaryColor} 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -webkit-linear-gradient(
     left,
-    ${reduxColor} 10%,
+    ${bluePrimaryColor} 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -o-linear-gradient(
     left,
-    ${reduxColor} 10%,
+    ${bluePrimaryColor} 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -ms-linear-gradient(
     left,
-    ${reduxColor} 10%,
+    ${bluePrimaryColor} 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: linear-gradient(
     to right,
-    ${reduxColor} 10%,
+    ${bluePrimaryColor} 10%,
     rgba(128, 0, 255, 0) 42%
   );
   position: relative;
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
+  animation-name: load3;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
@@ -57,7 +59,7 @@ export const Loader = styled.div`
   &:before {
     width: 50%;
     height: 50%;
-    background: ${reduxColor};
+    background: ${bluePrimaryColor};
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
@@ -79,7 +81,7 @@ export const Loader = styled.div`
     right: 0;
   }
 
-  &:-webkit-keyframes load3 {
+  @keyframes load3 {
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
