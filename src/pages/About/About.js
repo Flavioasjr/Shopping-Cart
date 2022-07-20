@@ -10,11 +10,13 @@ export default function About({ hideImgHome }) {
     hideImgHome();
   }, []);
 
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   return (
     <Styled.SectionAbout>
-      {shoppingCartIsShow ? (
+      {shouldShowShoppingCart ? (
         <Styled.DarkBackground title="dark-background" />
       ) : null}
       <Styled.About>

@@ -12,13 +12,15 @@ import ImgHome from './components/ImgHome/ImgHome';
 import About from './pages/About/About';
 
 function RouteSwitch({ showImgHome, displayImgHome, hideImgHome }) {
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   return (
     <BrowserRouter>
       {showImgHome ? <ImgHome /> : null}
 
-      {shoppingCartIsShow ? <ShoppingCart /> : null}
+      {shouldShowShoppingCart ? <ShoppingCart /> : null}
       <Header showImgHome={showImgHome} />
       <Routes>
         <Route

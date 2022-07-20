@@ -9,11 +9,13 @@ export default function Home({ displayImgHome }) {
     displayImgHome();
   }, []);
 
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   return (
     <section>
-      {shoppingCartIsShow ? (
+      {shouldShowShoppingCart ? (
         <Styled.DarkBackground title="dark-background" />
       ) : null}
       <Styled.Home>

@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledHeader';
-import { shoppingCartShown } from '../../features/shoppingCartIsShowSlice';
+import { shoppingCartShown } from '../../features/shouldShowShoppingCartSlice';
 
 export default function Header({ showImgHome }) {
   const productsInCart = useSelector((state) => state.productsInCart);
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   const [sizeProductsInCart, setSizeProductsInCart] = useState(0);
 
@@ -19,7 +21,7 @@ export default function Header({ showImgHome }) {
 
   return (
     <Styled.Header>
-      {shoppingCartIsShow ? <Styled.DarkBackground /> : null}
+      {shouldShowShoppingCart ? <Styled.DarkBackground /> : null}
       <Styled.BorderHeader showImgHome={showImgHome}>
         <Styled.TopHeader>
           <p>

@@ -53,8 +53,6 @@ const productsInCartSlice = createSlice({
         }
         return product;
       });
-
-      // return state.filter((product) => product.quantity > 0);
     },
   },
 });

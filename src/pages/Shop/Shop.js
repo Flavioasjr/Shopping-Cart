@@ -9,11 +9,13 @@ export default function Shop({ hideImgHome }) {
     hideImgHome();
   }, []);
 
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   return (
     <Styled.DivShop>
-      {shoppingCartIsShow ? <Styled.DarkBackground /> : null}
+      {shouldShowShoppingCart ? <Styled.DarkBackground /> : null}
       <Styled.Shop>
         <Styled.TitleShop>
           <h3>OUR PRODUCTS</h3>

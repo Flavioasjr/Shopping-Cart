@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const shoppingCartIsShowSlice = createSlice({
-  name: 'shoppingCartIsShow',
+const shouldShowShoppingCartSlice = createSlice({
+  name: 'shouldShowShoppingCart',
   initialState: false,
   reducers: {
     shoppingCartShown(state) {
@@ -16,6 +16,6 @@ const shoppingCartIsShowSlice = createSlice({
 });
 
 export const { shoppingCartShown, shoppingCartHidden } =
-  shoppingCartIsShowSlice.actions;
+  shouldShowShoppingCartSlice.actions;
 
-export default shoppingCartIsShowSlice.reducer;
+export default shouldShowShoppingCartSlice.reducer;

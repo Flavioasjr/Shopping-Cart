@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchProductsData = createAsyncThunk(
+export const fetchProducts = createAsyncThunk(
   'productsData/fetchProductsData',
   async () => {
     const response = await fetch('https://fakestoreapi.com/products');
@@ -12,7 +12,7 @@ export const fetchProductsData = createAsyncThunk(
   }
 );
 
-const productsDataSlice = createSlice({
+const productsSlice = createSlice({
   name: 'productsData',
   initialState: {
     products: [],
@@ -22,24 +22,24 @@ const productsDataSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchProductsData.pending, (state) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchProductsData.fulfilled, (state, action) => {
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
 
         state.products = action.payload;
       })
-      .addCase(fetchProductsData.rejected, (state, action) => {
+      .addCase(fetchProducts.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
   },
 });
 
-export default productsDataSlice.reducer;
+export default productsSlice.reducer;
 
-export const selectAllProducts = (state) => state.productsData.products;
+export const selectAllProducts = (state) => state.products.products;
 
 export const selectProductById = (state, productId) =>
-  state.productsData.products.find((product) => product.id === productId);
+  state.products.products.find((product) => product.id === productId);

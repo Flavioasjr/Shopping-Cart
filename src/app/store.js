@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import productsInCartReducer from '../features/productsInCartSlice';
-import productsDataReducer from '../features/productsDataSlice';
-import shoppingCartIsShowReducer from '../features/shoppingCartIsShowSlice';
+import productsReducer from '../features/productsSlice';
+import shouldShowShoppingCartReducer from '../features/shouldShowShoppingCartSlice';
 
 export default configureStore({
   reducer: {
     productsInCart: productsInCartReducer,
-    productsData: productsDataReducer,
-    shoppingCartIsShow: shoppingCartIsShowReducer,
+    products: productsReducer,
+    shouldShowShoppingCart: shouldShowShoppingCartReducer,
   },
 });

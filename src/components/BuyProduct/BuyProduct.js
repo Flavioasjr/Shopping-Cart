@@ -4,23 +4,22 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
 import { productAdded } from '../../features/productsInCartSlice';
-import {
-  selectProductById,
-  fetchProductsData,
-} from '../../features/productsDataSlice';
+import { selectProductById, fetchProducts } from '../../features/productsSlice';
 
 export default function BuyProduct({ hideImgHome }) {
   const { id } = useParams();
 
   const dispatch = useDispatch();
   const product = useSelector((state) => selectProductById(state, Number(id)));
-  const productsStatus = useSelector((state) => state.productsData.status);
+  const productsStatus = useSelector((state) => state.products.status);
 
-  const shoppingCartIsShow = useSelector((state) => state.shoppingCartIsShow);
+  const shouldShowShoppingCart = useSelector(
+    (state) => state.shouldShowShoppingCart
+  );
 
   useEffect(() => {
     if (productsStatus === 'idle') {
-      dispatch(fetchProductsData());
+      dispatch(fetchProducts());
     }
   }, []);
 
@@ -30,7 +29,7 @@ export default function BuyProduct({ hideImgHome }) {
 
   return (
     <Styled.BuyProduct>
-      {shoppingCartIsShow ? <Styled.DarkBackground /> : null}
+      {shouldShowShoppingCart ? <Styled.DarkBackground /> : null}
       <Styled.BuyProductContent>
         <Styled.Product key={product.id}>
           <Styled.ImgProduct

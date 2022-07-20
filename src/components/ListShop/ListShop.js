@@ -3,20 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as Styled from './styledListShop';
 import { productAdded } from '../../features/productsInCartSlice';
-import {
-  selectAllProducts,
-  fetchProductsData,
-} from '../../features/productsDataSlice';
+import { selectAllProducts, fetchProducts } from '../../features/productsSlice';
 import { Spinner } from '../Spinner/Spinner';
 
 export default function ListShop() {
   const dispatch = useDispatch();
   const productsData = useSelector(selectAllProducts);
-  const productsStatus = useSelector((state) => state.productsData.status);
+  const productsStatus = useSelector((state) => state.products.status);
 
   useEffect(() => {
     if (productsStatus === 'idle') {
-      dispatch(fetchProductsData());
+      dispatch(fetchProducts());
     }
   }, []);
 

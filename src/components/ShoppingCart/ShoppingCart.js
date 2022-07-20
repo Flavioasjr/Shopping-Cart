@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledShoppingCart';
 import ListShoppingCart from '../ListShoppingCart/ListShoppingCart';
-import { shoppingCartHidden } from '../../features/shoppingCartIsShowSlice';
+import { shoppingCartHidden } from '../../features/shouldShowShoppingCartSlice';
 
 export default function ShoppingCart() {
   const [totalPrice, setTotalPrice] = useState(0);
