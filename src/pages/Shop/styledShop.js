@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const DivShop = styled.div`
   background-color: #f7f7f7;
@@ -19,7 +18,7 @@ export const Shop = styled.div`
 `;
 
 export const TitleShop = styled.div`
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;

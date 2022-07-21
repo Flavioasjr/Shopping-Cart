@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const BuyProduct = styled.section`
   position: relative;
@@ -42,7 +41,7 @@ export const TitlePriceProduct = styled.div`
 `;
 
 export const ProductTitle = styled.h3`
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   text-transform: uppercase;
   font-size: 1.3rem;
 `;
@@ -66,7 +65,7 @@ export const ProductCategory = styled.p`
 export const BtnAddToCart = styled.button`
   &:hover {
     background: white;
-    border: 1px solid ${bluePrimaryColor};
-    color: ${bluePrimaryColor};
+    border: 1px solid var(--blue-primary-color);
+    color: var(--blue-primary-color);
   }
 `;

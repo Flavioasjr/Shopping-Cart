@@ -27,6 +27,10 @@ export default function BuyProduct({ hideImgHome }) {
     hideImgHome();
   }, []);
 
+  const handleClickAddToCart = () => {
+    dispatch(productAdded(product));
+  };
+
   return (
     <Styled.BuyProduct>
       {shouldShowShoppingCart ? <Styled.DarkBackground /> : null}
@@ -53,7 +57,7 @@ export default function BuyProduct({ hideImgHome }) {
             <Styled.BtnAddToCart
               title={product.id}
               type="button"
-              onClick={() => dispatch(productAdded(product))}
+              onClick={() => handleClickAddToCart()}
             >
               Add To Cart
             </Styled.BtnAddToCart>

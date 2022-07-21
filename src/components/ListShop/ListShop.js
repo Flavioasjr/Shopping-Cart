@@ -19,6 +19,10 @@ export default function ListShop() {
 
   if (productsStatus === 'loading') return <Spinner text="Loading..." />;
 
+  const handleClickAddToCart = (product) => {
+    dispatch(productAdded(product));
+  };
+
   return (
     <Styled.ProductsList>
       {productsData.map((product) => (
@@ -35,7 +39,7 @@ export default function ListShop() {
             <Styled.BtnAddToCart
               title={product.id}
               type="button"
-              onClick={() => dispatch(productAdded(product))}
+              onClick={() => handleClickAddToCart(product)}
             >
               Add To Cart
             </Styled.BtnAddToCart>

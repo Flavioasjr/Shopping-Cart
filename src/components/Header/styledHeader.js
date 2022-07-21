@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BsBag } from 'react-icons/bs';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const Header = styled.header`
   position: relative;
@@ -15,7 +14,7 @@ export const DarkBackground = styled.div`
 `;
 
 export const TopHeader = styled.div`
-  background-color: ${bluePrimaryColor};
+  background-color: var(--blue-primary-color);
   color: white;
   padding: 10px 30px;
   text-align: center;

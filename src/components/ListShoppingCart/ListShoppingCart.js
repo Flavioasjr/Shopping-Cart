@@ -12,6 +12,18 @@ export default function ListShoppingCart() {
 
   const productsInCart = useSelector((state) => state.productsInCart);
 
+  const handleClickSubtractQuantity = (id) => {
+    dispatch(quantitySubtracted(id));
+  };
+
+  const handleClickAddQuantity = (id) => {
+    dispatch(quantityAdded(id));
+  };
+
+  const handleClickRemoveProduct = (id) => {
+    dispatch(productRemoved(id));
+  };
+
   return (
     <div>
       {productsInCart.length === 0 ? (
@@ -33,7 +45,7 @@ export default function ListShoppingCart() {
                   <Styled.ChangeQuantity>
                     <Styled.SubtractIcon
                       onClick={() =>
-                        dispatch(quantitySubtracted(productInCart.id))
+                        handleClickSubtractQuantity(productInCart.id)
                       }
                       title={productInCart.id}
                       data-testid={`subtractIcon${productInCart.id}`}
@@ -45,7 +57,7 @@ export default function ListShoppingCart() {
                       title={productInCart.id}
                     />
                     <Styled.AddIcon
-                      onClick={() => dispatch(quantityAdded(productInCart.id))}
+                      onClick={() => handleClickAddQuantity(productInCart.id)}
                       title={productInCart.id}
                       data-testid={`addIcon${productInCart.id}`}
                     />
@@ -53,7 +65,7 @@ export default function ListShoppingCart() {
                   <Styled.BtnRemove
                     title={productInCart.id}
                     type="button"
-                    onClick={() => dispatch(productRemoved(productInCart.id))}
+                    onClick={() => handleClickRemoveProduct(productInCart.id)}
                   >
                     Remove
                   </Styled.BtnRemove>

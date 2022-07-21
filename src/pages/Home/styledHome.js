@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const Home = styled.div`
   position: absolute;
@@ -23,8 +22,8 @@ export const ButtonLink = styled.button`
   &:hover,
   &:focus {
     box-shadow: inset 250px 0 0 0 white;
-    border: 1px solid ${bluePrimaryColor};
-    color: ${bluePrimaryColor};
+    border: 1px solid var(--blue-primary-color);
+    color: var(--blue-primary-color);
   }
 `;
 

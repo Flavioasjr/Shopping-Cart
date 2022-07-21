@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const Spinner = styled.div`
   display: flex;
@@ -10,7 +9,7 @@ export const Spinner = styled.div`
 
 export const SpinnerText = styled.h4`
   margin: 5px;
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   font-size: 1.5rem;
 `;
 
@@ -22,30 +21,30 @@ export const Loader = styled.div`
   width: 5em;
   height: 5em;
   border-radius: 50%;
-  background: ${bluePrimaryColor};
+  background: var(--blue-primary-color);
   background: -moz-linear-gradient(
     left,
-    ${bluePrimaryColor} 10%,
+    var(--blue-primary-color) 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -webkit-linear-gradient(
     left,
-    ${bluePrimaryColor} 10%,
+    var(--blue-primary-color) 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -o-linear-gradient(
     left,
-    ${bluePrimaryColor} 10%,
+    var(--blue-primary-color) 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: -ms-linear-gradient(
     left,
-    ${bluePrimaryColor} 10%,
+    var(--blue-primary-color) 10%,
     rgba(128, 0, 255, 0) 42%
   );
   background: linear-gradient(
     to right,
-    ${bluePrimaryColor} 10%,
+    var(--blue-primary-color) 10%,
     rgba(128, 0, 255, 0) 42%
   );
   position: relative;
@@ -59,7 +58,7 @@ export const Loader = styled.div`
   &:before {
     width: 50%;
     height: 50%;
-    background: ${bluePrimaryColor};
+    background: var(--blue-primary-color);
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;

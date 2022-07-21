@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { AiOutlineClose } from 'react-icons/ai';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const ShoppingCart = styled.section`
   position: fixed;
@@ -18,7 +17,7 @@ export const HeaderCart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
 `;
 
 export const IconClose = styled(AiOutlineClose)`
@@ -38,7 +37,7 @@ export const BtnBuyNow = styled.button`
   transition: 0.8s;
   &:hover {
     box-shadow: inset 340px 0 0 0 white;
-    border: 1px solid ${bluePrimaryColor};
-    color: ${bluePrimaryColor};
+    border: 1px solid var(--blue-primary-color);
+    color: var(--blue-primary-color);
   }
 `;

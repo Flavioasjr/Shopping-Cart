@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const SectionAbout = styled.section`
   position: relative;
@@ -22,7 +21,7 @@ export const About = styled.div`
 `;
 
 export const TitleAbout = styled.h3`
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   font-weight: bold;
   text-transform: uppercase;
   text-align: center;
@@ -45,7 +44,7 @@ export const AboutContent = styled.div`
 
 export const TitleContent = styled.h4`
   letter-spacing: 2px;
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   padding-bottom: 15px;
   font-size: 1.2rem;
 `;

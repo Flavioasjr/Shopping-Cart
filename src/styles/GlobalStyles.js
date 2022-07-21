@@ -1,7 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { bluePrimaryColor } from './images/color';
 
 export default createGlobalStyle`
+:root {
+  --blue-primary-color: #123e64;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +25,7 @@ button {
   border: none;
   color: #fff;
   padding: 10px 20px;
-  background-color: ${bluePrimaryColor};
+  background-color: var(--blue-primary-color);
   font-weight: bold;
 }
 

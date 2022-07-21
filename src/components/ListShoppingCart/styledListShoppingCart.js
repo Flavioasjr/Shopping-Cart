@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { GrAdd, GrFormSubtract } from 'react-icons/gr';
-import { bluePrimaryColor } from '../../styles/images/color';
 
 export const CartEmpty = styled.h3`
   position: absolute;
@@ -9,7 +8,7 @@ export const CartEmpty = styled.h3`
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
   font-weight: 100;
 `;
 
@@ -37,7 +36,7 @@ export const ProductInformation = styled.div`
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  color: ${bluePrimaryColor};
+  color: var(--blue-primary-color);
 `;
 
 export const ProductInCartPrice = styled.p`

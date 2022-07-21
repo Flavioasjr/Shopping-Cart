@@ -19,6 +19,10 @@ export default function Header({ showImgHome }) {
     setSizeProductsInCart(productsInCart.length);
   }, [productsInCart]);
 
+  const handleClickShowShoppingCart = () => {
+    dispatch(shoppingCartShown());
+  };
+
   return (
     <Styled.Header>
       {shouldShowShoppingCart ? <Styled.DarkBackground /> : null}
@@ -57,7 +61,7 @@ export default function Header({ showImgHome }) {
           <div>
             <Styled.BtnShowShoppingcart
               type="button"
-              onClick={() => dispatch(shoppingCartShown())}
+              onClick={() => handleClickShowShoppingCart()}
               showImgHome={showImgHome}
             >
               <Styled.BagIcon />

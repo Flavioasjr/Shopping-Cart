@@ -20,12 +20,16 @@ export default function ShoppingCart() {
     );
   }, [productsInCart]);
 
+  const handleClickCloseShoppingCart = () => {
+    dispatch(shoppingCartHidden());
+  };
+
   return (
     <Styled.ShoppingCart>
       <Styled.HeaderCart>
         <h3>CART</h3>
         <Styled.IconClose
-          onClick={() => dispatch(shoppingCartHidden())}
+          onClick={() => handleClickCloseShoppingCart()}
           title="icon-close"
         />
       </Styled.HeaderCart>
