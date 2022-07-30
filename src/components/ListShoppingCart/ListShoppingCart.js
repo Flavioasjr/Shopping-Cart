@@ -24,6 +24,8 @@ export default function ListShoppingCart() {
     dispatch(productRemoved(id));
   };
 
+  const handleChangeQuantity = (quantity) => quantity;
+
   return (
     <div>
       {productsInCart.length === 0 ? (
@@ -53,7 +55,9 @@ export default function ListShoppingCart() {
                     <Styled.InputQuantity
                       value={productInCart.quantity}
                       type="number"
-                      onChange={() => productInCart.quantity}
+                      onChange={() =>
+                        handleChangeQuantity(productInCart.quantity)
+                      }
                       title={productInCart.id}
                     />
                     <Styled.AddIcon
