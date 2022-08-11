@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
 import { productAdded } from '../../features/productsInCartSlice';
-// import { Spinner } from '../Spinner/Spinner';
 import useProductById from '../../features/useProductById';
 
 export default function BuyProduct({ hideImgHome }) {
