@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
 import { productAdded } from '../../features/productsInCartSlice';
-import useProductById from '../../features/useProductById';
+import useProductById from '../../API/hooks/useProductById';
 
 export default function BuyProduct({ hideImgHome }) {
   const { id } = useParams();

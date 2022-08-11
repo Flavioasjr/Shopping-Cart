@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as Styled from './styledListShop';
 import { productAdded } from '../../features/productsInCartSlice';
 import { Spinner } from '../Spinner/Spinner';
-import useProducts from '../../features/useProducts';
+import useProducts from '../../API/hooks/useProducts';
 
 export default function ListShop() {
   const dispatch = useDispatch();
