@@ -5,10 +5,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
 import { productAdded } from '../../features/productsInCartSlice';
 import useProductById from '../../API/hooks/useProductById';
+import { Spinner } from '../Spinner/Spinner';
 
 export default function BuyProduct({ hideImgHome }) {
   const { id } = useParams();
-  const product = useProductById(id);
+  // const product = useProductById(id);
+  const {
+    data: product,
+    status: productStatus,
+    error: productError,
+  } = useProductById(id);
 
   const dispatch = useDispatch();
 
@@ -19,6 +25,10 @@ export default function BuyProduct({ hideImgHome }) {
   useEffect(() => {
     hideImgHome();
   }, []);
+
+  if (productStatus === 'loading') return <Spinner text="Loading..." />;
+
+  if (productStatus === 'error') return <div>{productError}</div>;
 
   const handleClickAddToCart = () => {
     dispatch(productAdded(product));
