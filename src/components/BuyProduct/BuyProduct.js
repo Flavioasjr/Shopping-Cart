@@ -4,28 +4,31 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Styled from './styledBuyProduct';
 import { productAdded } from '../../features/productsInCartSlice';
-import { selectProductById, fetchProducts } from '../../features/productsSlice';
+import useProductById from '../../API/hooks/useProductById';
+import { Spinner } from '../Spinner/Spinner';
 
 export default function BuyProduct({ hideImgHome }) {
   const { id } = useParams();
+  // const product = useProductById(id);
+  const {
+    data: product,
+    status: productStatus,
+    error: productError,
+  } = useProductById(id);
 
   const dispatch = useDispatch();
-  const product = useSelector((state) => selectProductById(state, Number(id)));
-  const productsStatus = useSelector((state) => state.products.status);
 
   const shouldShowShoppingCart = useSelector(
     (state) => state.shouldShowShoppingCart
   );
 
   useEffect(() => {
-    if (productsStatus === 'idle') {
-      dispatch(fetchProducts());
-    }
-  }, []);
-
-  useEffect(() => {
     hideImgHome();
   }, []);
+
+  if (productStatus === 'loading') return <Spinner text="Loading..." />;
+
+  if (productStatus === 'error') return <div>{productError}</div>;
 
   const handleClickAddToCart = () => {
     dispatch(productAdded(product));
